@@ -86,14 +86,15 @@ Avoid names like:
 **Rule #1:** You must upload your image file to the `images/` folder *before* you can link it in the README. 
 **Rule #2:** File names are case-sensitive. `Image.JPG` is not the same as `image.jpg`.
 
-I have placed a file called `sample.jpg` in your `images/` folder. Copy and paste the 4 examples below into your README to see how they work!
+I have placed a file called `sample_image_1.jpg` and 'sample_image_2.jpg' in your `images/` folder. Copy and paste the 4 examples below into your README to see how they work!
 
 ---
 
 ### Example 1: The Basic Image (Markdown)
 Use this for a standard, full-size image.
 
-```md
+```html
+<img src="images/sample_image_1.jpg" width="400">
 
 ```
 
@@ -101,7 +102,7 @@ Use this for a standard, full-size image.
 Phone photos are often massive. If an image takes up your whole screen, switch to HTML to control the width. *(Change `width="400"` to whatever number looks best).*
 
 ```html
-<img src="images/sample.jpg" width="400">
+<img src="images/sample_image_1.jpg" width="400">
 ```
 
 ### Example 3: Centering an Image
@@ -109,7 +110,7 @@ If you want your documentation to look clean and professional, you can center th
 
 ```html
 <p align="center">
-  <img src="images/sample.jpg" width="400">
+  <img src="images/sample_image_1.jpg" width="400">
 </p>
 ```
 
@@ -117,7 +118,7 @@ If you want your documentation to look clean and professional, you can center th
 Want to show the front and back of your build, or your app next to your hardware? Just put two HTML image tags on the exact same line with a space between them. 
 
 ```html
-<img src="images/sample.jpg" width="300"> <img src="images/sample.jpg" width="300">
+<img src="images/sample_image_1.jpg" width="300"> <img src="images/sample_image_2.jpg" width="300">
 ```
 
 *(Note: Ensure their combined width is less than ~800 so they fit next to each other on most screens).*
