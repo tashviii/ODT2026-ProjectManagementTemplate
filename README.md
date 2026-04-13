@@ -144,37 +144,39 @@ Examples:
 - move object → sensor detects → sound/light response → player reacts
 
 **Response:**  
-`[Write here]`
+preview block → position → place → clear lines → score → repeat → game over
 
 ## 4.2 Intended Player / Audience
 
 | Question | Response |
 |---|---|
-| Who is this for? | `[Write here]` |
-| Age range | `[Write here]` |
-| Solo or multiplayer | `[Write here]` |
-| Expected duration of one round | `[Write here]` |
-| What should the player feel? | `[Write here]` |
-| Is explanation required before use? | `[Write here]` |
+| Who is this for? | Anyone who wants to go back to a simpler time, disconnect from their phone or just enjoy a game of strategy |
+| Age range | 10 years and above |
+| Solo or multiplayer | Solo |
+| Expected duration of one round | Anywhere from 3 - 10 minutes on basis of skill |
+| What should the player feel? | Focused and competitive while playing, satisfied when game ends |
+| Is explanation required before use? | Minimal, most people are aware of the game, and its quite self explanatory otherwise |
 
 ## 4.3 Player Journey
 Describe exactly how a player will use the project.
 
 1. **Approach:** `[How does the player first encounter it?]`
-2. **Start:** `[How do they begin?]`
-3. **First Action:** `[What do they do first?]`
-4. **Main Interaction:** `[What keeps happening during use?]`
-5. **System Response:** `[How does the project respond?]`
-6. **Win / Lose / End Condition:** `[How does one round end?]`
-7. **Reset:** `[How does the next round begin?]`
+2. **Start:** The game is already running in idle/start state. The player presses any button or the Place button to begin.
+3. **First Action:** A white block shape appears on the 5×5 preview matrix. The player presses the directional buttons to move the cursor (ghost block) around the 8×8 board to choose a placement position.
+4. **Main Interaction:** The player continuously receives new blocks on the preview matrix, decides where they fit best on the board, navigates the cursor, and presses Place to lock them in. The board fills up gradually.
+5. **System Response:** Each placed block lights up in a random colour on the 8×8 matrix. When a full row or column is completed, it instantly clears, the NeoPixel ring flashes green, and the LCD score updates. The preview matrix immediately shows the next block.
+6. **Win / Lose / End Condition:** The game ends when the current block cannot be placed anywhere on the board. The NeoPixel ring flashes red, the LCD displays the final score on row 2.
+7. **Reset:** After a 15-second display of the final score, the board clears and a new game begins automatically.
 
 ## 4.4 Rules of Play
 If your project is a game, list the rules clearly.
 
-- `[Rule 1]`
-- `[Rule 2]`
-- `[Rule 3]`
-- `[Rule 4]`
+- The player must place the block shown on the 5×5 preview matrix somewhere on the 8×8 board — they cannot skip or discard a block.
+- Blocks cannot overlap existing placed blocks or go outside the board boundary.
+- Placing any block scores 1 point.
+- Completing a full row or full column (all 8 cells filled) clears that line and scores 10 points per line cleared.
+- Multiple rows and columns can be cleared in a single placement — all are cleared simultaneously and each scores 10 points.
+- The game ends when no position on the board can fit the current block.
 
 ---
 
@@ -193,15 +195,15 @@ Your project will be considered complete only if these conditions are met.
 What is the smallest version of this project that still delivers the core experience?
 
 **Response:**  
-`[Write here]`
+A working version where the player can place blocks on the 8×8 matrix using the five buttons, lines clear when completed and the game ends and resets correctly. The 5×5 preview matrix, LCD screen and NeoPixel ring are part of the minimum viable version since they are central to the designed experience.
 
 ## 5.3 Stretch Features
 What features are nice to have but not essential?
 
-- `[Stretch feature 1]`
-- `[Stretch feature 2]`
-- `[Stretch feature 3]`
-
+- A high score that persists across resets, stored in the ESP32's non-volatile memory and shown on the LCD at game over
+- A difficulty or speed mode where a time limit per placement is enforced, adding pressure
+- Sound effects using a small buzzer
+  
 ---
 
 # 6. System Overview
