@@ -52,20 +52,19 @@ By the final review, this README should clearly show:
 # 1. Team Identity
 
 ## 1.1 Studio / Group Name
-`[Enter your group name]`
+Pixels Illuminate 
 
 ## 1.2 Team Members
 
 | Name | Primary Role | Secondary Role | Strengths Brought to the Project |
 |---|---|---|---|
-| `[Student 1]` | `[Electronics / Coding / App / Fabrication / Mechanics]` | `[Role]` | `[Write here]` |
-| `[Student 2]` | `[Electronics / Coding / App / Fabrication / Mechanics]` | `[Role]` | `[Write here]` |
+| Tashvi Shukla | Coding | Electronics | Previous coding knowledge |
 
 ## 1.3 Project Title
-`[Enter the title of your project]`
+IRL Block Blast 
 
 ## 1.4 One-Line Pitch
-`[Describe your project in one sentence]`
+A physical, LED-powered recreation of the Block Blast puzzle game, controlled by real buttons and played on a glowing 8×8 matrix.
 
 ## 1.5 Expanded Project Idea
 In 1–2 paragraphs, explain:
@@ -75,7 +74,8 @@ In 1–2 paragraphs, explain:
 - what technologies are involved.
 
 **Response:**  
-`[Write here]`
+IRL Block Blast is a tangible, hardware-based reimagining of the popular mobile game Block Blast. The game runs on an ESP32 microcontroller and is displayed on an 8×8 LED matrix, where colourful blocks accumulate as the player places them one by one. A separate 5×5 LED matrix acts as a live preview window, showing the next block in white before it is placed. The player uses a five-button controller for directions (up, down, left, right, place) to position and drop each block onto the board. An LCD screen tracks the score in real time, and a NeoPixel ring lights up green when a line is cleared and red when the game ends.
+The experience is satisfying in the same way the original mobile game is. There is a quiet pleasure in slotting a block perfectly into a gap and watching a full row or column vanish in a flash of light. What makes this version special is that it is entirely physical, completely replacing the need for a phone with the glow of the LEDs, the click of the buttons, and the tactile feedback of a real controller. It reactivates nostalgia, reminiscent of the times when video games used to be physical. 
 
 ---
 
@@ -101,7 +101,7 @@ Answer the following:
 - Why would someone want to try it again?
 
 **Response:**  
-`[Write here]`
+The experience is a single-player puzzle game that rewards spatial thinking and forward strategy. The player must look at the incoming block on the preview matrix and decide where it fits best on the board, while also considering what the future turns could look like. The player should feel a sense of focus and flow while playing, punctuated by bursts of satisfaction when a line clears and the board opens up. The visual feedback makes every successful clear feel rewarding rather than silent. The moment the game ends, the red flash and the final score on the LCD create a natural desire to beat the number next time. Someone would want to try it again because puzzle games like this are inherently "one more go" experiences. One always believes they can beat the number the next time they play and the glowing hardware certainly makes it visually appealing to pick up and play again.
 
 ## 2.3 Design Persona
 Complete the sentence below:
@@ -109,7 +109,7 @@ Complete the sentence below:
 > We are designing this project as if we are a small creative studio making a **[toy / game / playable object / interactive experience]** for **[children / teens / adults / classmates / exhibition visitors / mixed audience]**.
 
 **Response:**  
-`[Write here]`
+I am designing this project as if I am a small creative studio making a physical game for mostly teenagers but also mixed audiences.
 
 ---
 
@@ -120,15 +120,15 @@ List what inspired the project.
 
 | Source Type | Title / Link | What Inspired You |
 |---|---|---|
-| `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
-| `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
+| App | Block Blast | Core logic of gameplay of placing blocks, clearing full lines and columns, game over when no space remains |
+| Board game/ Toy | Tetris | The idea that a falling-block puzzle can be endlessly replayable and deeply satisfying in a tactile form |
 | `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
 
 ## 3.2 Original Twist
 What makes your project original?
 
 **Response:**  
-`[Write here]`
+While Block Blast already exists as a polished mobile app, no one has physically built it as an LED matrix game with real button controls. The aim is to simulate a retro video game controller, to build on the factor of nostalgia and offline connection. The project's originality lies in the translation from screen to hardware with the 5×5 preview matrix as a separate physical display, the NeoPixel ring as an expressive status indicator, and the use of colourful individually-addressable LEDs that make each player's board state look visually unique. It is not just a copy of the game but a reimagining of what that game feels like when you can hold it, press real buttons, and watch light physically change in front of you.
 
 ---
 
