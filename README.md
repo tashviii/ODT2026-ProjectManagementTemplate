@@ -245,9 +245,16 @@ App interaction: NA
 
 | System Part | Type | What It Does |
 |---|---|---|
-| `[Button / Sensor / Switch / App Input]` | Input | `[Describe]` |
-| `[ESP32 / Controller]` | Processing | `[Describe]` |
-| `[LED / Motor / Servo / Buzzer / Display]` | Output | `[Describe]` |
+| Up button | Input | Moves cursor up |
+| Down button | Input | Moves cursor down |
+| Left button | Input | Moves cursor left |
+| Right button | Input | Moves cursor right |
+| Place button | Input | To place the block on the board in a final position |
+| ESP32 | Processing | Controls the whole game, runs the code |
+| 8x8 LED Matrix | Output | Displays the board state to play the game on|
+| 8x8 LED Matrix | Output | Displays a preview of the next block to come |
+| Green LED | Output | Flashes thrice when a line clears |
+| Red LED | Output | Flashes thrice when the game is over |
 | `[Mechanical Assembly]` | Physical Action | `[Describe]` |
 
 ---
@@ -303,13 +310,13 @@ Check all that apply.
 - [ ] Wheels
 - [ ] Sliders
 - [ ] Levers
-- [ ] Not applicable
+- [Not applicable] Not applicable
 
 ## 8.2 Mechanical Description
 Describe the mechanism and what it is meant to do.
 
 **Response:**  
-`[Write here]`
+NA
 
 ## 8.3 Motion Planning
 If something moves, explain:
@@ -320,21 +327,20 @@ If something moves, explain:
 - what could go wrong.
 
 **Response:**  
-`[Write here]`
+NA
 
 ## 8.4 Simulation / CAD / Animation Before Making
 If your project includes mechanical motion, document the digital planning before fabrication.
 
 | Tool Used | File / Link | What Was Tested |
 |---|---|---|
-| `[Fusion 360 / Tinkercad / other]` | `[Link or screenshot]` | `[What did you validate?]` |
-| `[Tool]` | `[Link or screenshot]` | `[What did you validate?]` |
+NA
 
 ## 8.5 Changes After Digital Testing
 What changed after the CAD, animation, or simulation stage?
 
 **Response:**  
-`[Write here]`
+NA
 
 ---
 
@@ -344,9 +350,12 @@ What changed after the CAD, animation, or simulation stage?
 
 | Component | Quantity | Purpose |
 |---|---:|---|
-| `[ESP32]` | `1` | `[Main controller]` |
-| `[Component]` | `[Qty]` | `[Purpose]` |
-| `[Component]` | `[Qty]` | `[Purpose]` |
+| ESP32 | 1 | Main controller |
+| 8x8 Neopixel Matrix | 2 | One is used for displaying the real game board, while one is used for previewing the upcoming blocks |
+| Tactile push buttons | 5 | Up, Down, Left, Right, Place- control the direction of the block on board |
+| Green LED | 1 | Indicator of line clearing |
+| Red LED | 1 | Indicator of game ending |
+
 
 ## 9.2 Wiring Plan
 Describe the main electrical connections.
