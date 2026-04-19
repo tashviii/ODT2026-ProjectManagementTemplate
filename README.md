@@ -185,11 +185,11 @@ If your project is a game, list the rules clearly.
 ## 5.1 Definition of “Playable”
 Your project will be considered complete only if these conditions are met.
 
-- [ ] `[The 8x8 LED matrix correctly displays placed blocks in colour and updates in real time] `
-- [ ] `[ The 5×5 preview region on the second matrix correctly shows the upcoming block in white]`
-- [ ] `[All five buttons respond correctly to the input]`
-- [ ] `[Clearing lines works smoothly and in sync with the flash of the green LED]`
-- [ ] `[The game correctly detects when no more placement is possible, triggering the red LED and clearing the whole board]`
+- [ ] `The 8x8 LED matrix correctly displays placed blocks in colour and updates in real time`
+- [ ] `The 5×5 preview region on the second matrix correctly shows the upcoming block in white`
+- [ ] `All five buttons respond correctly to the input`
+- [ ] `Clearing lines works smoothly and in sync with the flash of the green LED`
+- [ ] `The game correctly detects when no more placement is possible, triggering the red LED and clearing the whole board`
 
 ## 5.2 Minimum Viable Version
 What is the smallest version of this project that still delivers the core experience?
@@ -235,7 +235,11 @@ Include:
 - app interaction if any.
 
 **Response:**  
-`[Write here]`
+Input: Five tactile buttons for different directions (up, down, left, right and place) are wired to the ESP32 GPIO, using the PULL_DOWN configuration.
+Processing: An ESP32 microcontroller running MicroPython executes all game logic including block selection, cursor movement, collision detection, line clearing, score tracking, and game over detection. The board state is stored as an 8×8 Python list where each cell is either empty or filled. 
+Output: An 8×8 NeoPixel matrix displays the live game board. A second 8×8 matrix displays the upcoming block in white in its bottom-right 5×5 region only (first 3 rows and columns are unused). A green LED flashes when a line is cleared. A red LED flashes when the game ends.
+Physical structure: 
+App interaction: NA
 
 ## 6.3 Input / Output Map
 
