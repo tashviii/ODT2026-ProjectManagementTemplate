@@ -150,7 +150,7 @@ preview block → position → place → clear lines → score → repeat → ga
 
 | Question | Response |
 |---|---|
-| Who is this for? | Anyone who wants to go back to a simpler time, disconnect from their phone or just enjoy a game of strategy |
+| Who is this for? | Anyone who wants to go back to a simpler time, disconnect from their phone or just enjoy a game of simple strategy |
 | Age range | 10 years and above |
 | Solo or multiplayer | Solo |
 | Expected duration of one round | Anywhere from 3 - 10 minutes on basis of skill |
@@ -185,11 +185,11 @@ If your project is a game, list the rules clearly.
 ## 5.1 Definition of “Playable”
 Your project will be considered complete only if these conditions are met.
 
-- [ ] `[Condition 1]`
-- [ ] `[Condition 2]`
-- [ ] `[Condition 3]`
-- [ ] `[Condition 4]`
-- [ ] `[Condition 5]`
+- [ ] `[The 8x8 LED matrix correctly displays placed blocks in colour and updates in real time] `
+- [ ] `[ The 5×5 preview region on the second matrix correctly shows the upcoming block in white]`
+- [ ] `[All five buttons respond correctly to the input]`
+- [ ] `[Clearing lines works smoothly and in sync with the flash of the green LED]`
+- [ ] `[The game correctly detects when no more placement is possible, triggering the red LED and clearing the whole board]`
 
 ## 5.2 Minimum Viable Version
 What is the smallest version of this project that still delivers the core experience?
