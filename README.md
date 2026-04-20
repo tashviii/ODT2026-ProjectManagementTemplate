@@ -523,10 +523,15 @@ NA
 
 | Item | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec | Why This Choice? |
 |---|---:|---|---|---:|---|---|
-| ESP32 | 1 | Yes | No | 0 | Spec |  |
-| LED Matrix | 2 | No | Yes | `[Cost]` | `[Spec]` | `[Reason]` |
+| ESP32 | 1 | Yes | No | 0 | Spec | Micropython game logic is easier to control |
+| LED Matrix | 2 | No | Yes | 299 x 2 | Spec | To create a playing board for the game, as well as a preview board to show upcoming pieces |
 | Tactile push buttons | 5 | Yes | No | 0 | Spec | To simulate the nostalgic feeling of playing on old video game consoles |
 | Breadboard | 1 | Yes | No | 0 | Spec | Easier connections between power supply, ESP32 and components |
+| Red LED | 1 | Yes | No | 0 | Spec | Signal for game ending |
+| Green LED | 1 | Yes | No | 0 | Spec | Signals line clearing |
+| Resistor | 2 | Yes | No | 0 | Spec |  |
+| Jumper wires | Multiple | Yes | No | 0 | Spec | Forming connections between components |
+| Power supply | 1 | Yes | No | 0 | Spec | Provide more power to ESP32 connections |
 
 
 ## 12.2 Material Justification
