@@ -355,7 +355,7 @@ NA
 | Tactile push buttons | 5 | Up, Down, Left, Right, Place- control the direction of the block on board |
 | Green LED | 1 | Indicator of line clearing |
 | Red LED | 1 | Indicator of game ending |
-| Resistor | 2 | Data line protection for both matrixes |
+| Resistor | 2 | Data line protection for both matrices |
 | External 5V power supply | 1 | Powers breadboard |
 
 
@@ -363,7 +363,7 @@ NA
 Describe the main electrical connections.
 
 **Response:**  
-`[Write here]`
+Both matrices connect to the ESP32 via GPIO 13 and GPIO 32 respectively, each through a Ω resistor on the data line. Both matrices and the ESP32 are powered from an external 5V supply. The ESP32 receives 5V through its VIN pin, and the matrices receive 5V directly through their V+ pins. All grounds are tied together on a common rail. The five buttons connect between their respective GPIO pins and 3.3V, using internal PULL_DOWN in code. The green LED connects to GPIO 27 and GND. The red LED connects to GPIO 4 and GND.
 
 ## 9.3 Circuit Diagram
 Insert a hand-drawn or software-made circuit diagram.
@@ -375,10 +375,10 @@ Insert a hand-drawn or software-made circuit diagram.
 
 | Question | Response |
 |---|---|
-| Power source | `[USB / battery / adapter / other]` |
-| Voltage required | `[Write here]` |
-| Current concerns | `[Write here]` |
-| Safety concerns | `[Write here]` |
+| Power source | External 5V adapter |
+| Voltage required |  5V for both matrices and ESP32; ESP32 onboard regulator steps down to 3.3V internally for all GPIO logic |
+| Current concerns | Overheating of ESP32 due to connection between VIN and 5V |
+| Safety concerns | Overheating of ESP32 due to connection between VIN and 5V |
 
 ---
 
@@ -388,8 +388,8 @@ Insert a hand-drawn or software-made circuit diagram.
 
 | Tool / Platform | Purpose |
 |---|---|
-| `[MicroPython / Arduino / MIT App Inventor / CAD tool / other]` | `[Purpose]` |
-| `[Tool]` | `[Purpose]` |
+| MicroPython | Firmware language on ESP32 |
+| Thonny IDE | Code upload |
 
 ## 10.2 Software Logic
 Describe what the code must do.
@@ -404,7 +404,15 @@ Include:
 - reset behavior.
 
 **Response:**  
-`[Write here]`
+Startup: Both matrices are cleared. A 1-second delay flushes any startup noise. All debounce timers reset. A random block loads into the preview matrix in white. The game board stays dark.
+Input handling: All five buttons are polled every 30ms. Each press is validated against a 250ms debounce timer per button. 
+Block pickup: When any directional button is pressed and no block is active, the current block transfers from preview to board at the first valid free position. The next block immediately appears in the preview. The ghost block that appears on the board is in white.
+Cursor movement: Directional buttons move the cursor within board boundaries.
+Collision detection: The white cursor moves freely over existing coloured blocks visually. The Place button only locks the block in if there is no overlap with existing blocks and no out-of-bounds cells.
+Placement: On valid placement, the block appears on the board in a random colour. Score increments by 1. Line clear check runs immediately.
+Line clearing: All completed rows and columns are identified and cleared simultaneously as score increments by 10 per line. Green LED flashes thrice.
+Game over: After each placement, all 8×8 positions are scanned for any valid placement of the next block. If none exists, red LED flashes thrice, both matrices clear. There is a 3-second pause before game restarts.
+Reset: run_game() calls itself recursively, reinitialising all state variables cleanly.
 
 ## 10.3 Code Flowchart
 Insert a flowchart showing your code logic.
@@ -424,9 +432,48 @@ Suggested sequence:
 
 ## 10.4 Pseudocode
 
-```text
-[Write your pseudocode here]
-```
+
+START
+  clear both matrices
+  wait 1 second
+  reset all debounce timers
+  pick random cur_block, next_block
+  show cur_block in preview (white)
+  block_active = False
+
+LOOP
+  IF block_active is False:
+    IF any direction button pressed:
+      find first free position on board
+      IF no free position: GAME OVER
+      set cursor to free position
+      block_active = True
+      show next_block in preview immediately
+      draw board with white cursor ghost
+
+  IF block_active is True:
+    read buttons
+    IF up/down/left/right pressed:
+      calculate new cursor position within bounds
+      IF position changed: redraw board with cursor
+    IF place pressed:
+      IF block_fits at cursor:
+        write block to board in current colour
+        check and clear lines
+        IF lines cleared: flash green LED
+        load next_block as cur_block
+        pick new next_block
+        block_active = False
+        IF no valid position for cur_block: GAME OVER
+        show cur_block in preview
+        redraw board
+
+  GAME OVER:
+    flash red LED
+    clear both matrices
+    wait 3 seconds
+    restart
+
 
 ---
 
@@ -450,28 +497,23 @@ Examples:
 - displaying data.
 
 **Response:**  
-`[Write here]`
+NA
 
 ## 11.3 App Features
 
 | Feature | Purpose |
 |---|---|
-| `[Bluetooth connect button]` | `[Purpose]` |
-| `[Score display]` | `[Purpose]` |
-| `[Control button / slider / label]` | `[Purpose]` |
+NA
 
 ## 11.4 UI Mockup
 Insert a sketch or screenshot of the app interface.
 
 **Insert image below:**  
-`[Upload image and link here]`
+NA
 
 ## 11.5 App Screen Flow
 
-1. `[Step 1]`
-2. `[Step 2]`
-3. `[Step 3]`
-4. `[Step 4]`
+NA
 
 ---
 
@@ -481,9 +523,11 @@ Insert a sketch or screenshot of the app interface.
 
 | Item | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec | Why This Choice? |
 |---|---:|---|---|---:|---|---|
-| `[ESP32]` | `1` | `Yes` | `No` | `0` | `[Spec]` | `[Reason]` |
-| `[Item]` | `[Qty]` | `[Yes/No]` | `[Yes/No]` | `[Cost]` | `[Spec]` | `[Reason]` |
-| `[Item]` | `[Qty]` | `[Yes/No]` | `[Yes/No]` | `[Cost]` | `[Spec]` | `[Reason]` |
+| ESP32 | 1 | Yes | No | 0 | Spec |  |
+| LED Matrix | 2 | No | Yes | `[Cost]` | `[Spec]` | `[Reason]` |
+| Tactile push buttons | 5 | Yes | No | 0 | Spec | To simulate the nostalgic feeling of playing on old video game consoles |
+| Breadboard | 1 | Yes | No | 0 | Spec | Easier connections between power supply, ESP32 and components |
+
 
 ## 12.2 Material Justification
 Explain why you selected your main materials and components.
