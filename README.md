@@ -355,6 +355,8 @@ NA
 | Tactile push buttons | 5 | Up, Down, Left, Right, Place- control the direction of the block on board |
 | Green LED | 1 | Indicator of line clearing |
 | Red LED | 1 | Indicator of game ending |
+| Resistor | 2 | Data line protection for both matrixes |
+| External 5V power supply | 1 | Powers breadboard |
 
 
 ## 9.2 Wiring Plan
