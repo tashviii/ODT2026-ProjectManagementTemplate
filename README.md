@@ -529,10 +529,14 @@ NA
 | Breadboard | 1 | Yes | No | 0 | Spec | Easier connections between power supply, ESP32 and components |
 | Red LED | 1 | Yes | No | 0 | Spec | Signal for game ending |
 | Green LED | 1 | Yes | No | 0 | Spec | Signals line clearing |
-| Resistor | 2 | Yes | No | 0 | Spec |  |
+| Resistor | 2 | Yes | No | 0 | Spec | Reduce current flow |
 | Jumper wires | Multiple | Yes | No | 0 | Spec | Forming connections between components |
 | Power supply | 1 | Yes | No | 0 | Spec | Provide more power to ESP32 connections |
-
+| LCD screen | 1 | No | Yes | 220 | Spec | To display score |
+| i2c module | 1 | No | Yes | 150 | Spec | To display score |
+| MDF board | 1 | No | No | 0 | Material | To make the physical model viable |
+| Cardboard | 1 | No | No | 0 | Material | To make the physical model viable |
+| Tape | 1 | No | No | 0 | Material | To make the physical model viable |
 
 ## 12.2 Material Justification
 Explain why you selected your main materials and components.
@@ -544,31 +548,32 @@ Examples:
 - Why bearing instead of a plain shaft hole?
 
 **Response:**  
-`[Write here]`
+WS2812B matrices were chosen because they are individually addressable, require only a single data wire each, and are available in pre-assembled 8×8 panels — making physical setup clean and reliable. The ESP32 was chosen over Arduino because MicroPython makes the game logic far easier to write and debug, and its processing speed handles real-time LED updates without issue. Tactile buttons were chosen over a joystick module because the game only needs discrete directional inputs and individual coloured buttons better simulate the feel of a retro game controller. Simple green and red LEDs were used for the status indicators because they are simpler to wire and use less current. MDF was chosen over cardboard for the physical base because it is rigid, flat, and will not warp under the weight of the components during a showcase.
 
 ## 12.3 Items to Purchase Separately
 
 | Item | Why Needed | Purchase Link | Latest Safe Date to Procure | Status |
 |---|---|---|---|---|
-| `[Item]` | `[Reason]` | `[Link]` | `[Date]` | `[Pending / Ordered / Received]` |
-| `[Item]` | `[Reason]` | `[Link]` | `[Date]` | `[Pending / Ordered / Received]` |
+| LED matrix | The board for the whole game | `[Link]` | 13th April | Recieved |
+| LCD screen | To display score | `[Link]` | 18th April | Recieved (faulty) |
+| I2C module | To display score | `[Link]` | 18th April | Recieved (late) |
 
 ## 12.4 Budget Summary
 
 | Budget Item | Estimated Cost |
 |---|---:|
-| Electronics | `[Cost]` |
-| Mechanical parts | `[Cost]` |
-| Fabrication materials | `[Cost]` |
-| Purchased extras | `[Cost]` |
-| Contingency | `[Cost]` |
-| **Total** | `[Cost]` |
+| Electronics | 970 |
+| Mechanical parts | 0 |
+| Fabrication materials | 0 |
+| Purchased extras | 0 |
+| Contingency | 100 |
+| **Total** | 1070 |
 
 ## 12.5 Budget Reflection
 If your cost is too high, what can be simplified, removed, substituted, or shared?
 
 **Response:**  
-`[Write here]`
+NA
 
 ---
 
@@ -585,32 +590,19 @@ Include:
 - how documentation will be maintained.
 
 **Response:**  
-`[Write here]`
+NA - working alone
 
 ## 13.2 Task Breakdown
 
 | Task ID | Task | Owner | Estimated Hours | Deadline | Dependency | Status |
 |---|---|---|---:|---|---|---|
-| T1 | `[Finalize concept]` | `[Name]` | `2` | `[Date]` | `None` | `To Do` |
-| T2 | `[Complete BOM]` | `[Name]` | `1` | `[Date]` | `T1` | `To Do` |
-| T3 | `[Test electronics]` | `[Name]` | `2` | `[Date]` | `T1` | `To Do` |
-| T4 | `[Build structure]` | `[Name]` | `4` | `[Date]` | `T1` | `To Do` |
-| T5 | `[Write control code]` | `[Name]` | `4` | `[Date]` | `T3` | `To Do` |
-| T6 | `[Integrate system]` | `[Name]` | `4` | `[Date]` | `T4, T5` | `To Do` |
-| T7 | `[Playtest]` | `[Name]` | `2` | `[Date]` | `T6` | `To Do` |
-| T8 | `[Refine and document]` | `[Name]` | `3` | `[Date]` | `T7` | `To Do` |
+NA
 
 ## 13.3 Responsibility Split
 
 | Area | Main Owner | Support Owner |
 |---|---|---|
-| Concept and gameplay | `[Name]` | `[Name]` |
-| Electronics | `[Name]` | `[Name]` |
-| Coding | `[Name]` | `[Name]` |
-| App | `[Name]` | `[Name]` |
-| Mechanical build | `[Name]` | `[Name]` |
-| Testing | `[Name]` | `[Name]` |
-| Documentation | `[Name]` | `[Name]` |
+NA
 
 ---
 
@@ -656,8 +648,8 @@ Expected outcomes:
 
 | Week | Planned Goal | What Actually Happened | What Changed | Next Steps |
 |---|---|---|---|---|
-| Week 1 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
-| Week 2 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
+| Week 1 | Finalise concept, complete BOM, identify purchases| Project concept finalised, all components identified, initial wiring planned | Decided to use two 8×8 matrices| Order parts, begin wiring plan |
+| Week 2 | Test all components, resolve any hardware issues | All components individually tested. Power and signal issues discovered and resolved. Matrix orientation confirmed. | `[Write here]` | `[Write here]` |
 | Week 3 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
 | Week 4 | `[Write here]` | `[Write here]` | `[Write here]` | `[Write here]` |
 
