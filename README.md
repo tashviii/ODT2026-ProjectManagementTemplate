@@ -263,7 +263,7 @@ Include:
 Add an early sketch of the full idea.
 
 **Insert image below:**  
-<img src="images/initial game design.jpg" width="400">
+<img src="images/initial-game-design.jpg" width="400">
 
 Example:
 ```md
