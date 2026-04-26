@@ -52,19 +52,19 @@ By the final review, this README should clearly show:
 # 1. Team Identity
 
 ## 1.1 Studio / Group Name
-Pixels Illuminate 
+`Neon Arcade`
 
 ## 1.2 Team Members
 
 | Name | Primary Role | Secondary Role | Strengths Brought to the Project |
 |---|---|---|---|
-| Tashvi Shukla | Coding | Electronics | Previous coding knowledge |
+| `Tashvi Shukla` | `Coding` | `Electronics` | `Previous coding knowledge` |
 
 ## 1.3 Project Title
-IRL Block Blast 
+`IRL Block Blast` 
 
 ## 1.4 One-Line Pitch
-A physical, LED-powered recreation of the Block Blast puzzle game, controlled by real buttons and played on a glowing 8×8 matrix.
+`A physical, LED-powered recreation of the Block Blast puzzle game, controlled by real buttons and played on a glowing 8×8 matrix.`
 
 ## 1.5 Expanded Project Idea
 In 1–2 paragraphs, explain:
@@ -74,8 +74,8 @@ In 1–2 paragraphs, explain:
 - what technologies are involved.
 
 **Response:**  
-IRL Block Blast is a tangible, hardware-based reimagining of the popular mobile game Block Blast. The game runs on an ESP32 microcontroller and is displayed on an 8×8 LED matrix, where colourful blocks accumulate as the player places them one by one. A separate 5×5 LED matrix acts as a live preview window, showing the next block in white before it is placed. The player uses a five-button controller for directions (up, down, left, right, place) to position and drop each block onto the board. An LCD screen tracks the score in real time, and a NeoPixel ring lights up green when a line is cleared and red when the game ends.
-The experience is satisfying in the same way the original mobile game is. There is a quiet pleasure in slotting a block perfectly into a gap and watching a full row or column vanish in a flash of light. What makes this version special is that it is entirely physical, completely replacing the need for a phone with the glow of the LEDs, the click of the buttons, and the tactile feedback of a real controller. It reactivates nostalgia, reminiscent of the times when video games used to be physical. 
+`IRL Block Blast is a tangible, hardware-based reimagining of the popular mobile game Block Blast. The game runs on an ESP32 microcontroller and is displayed on an 8×8 LED matrix, where colourful blocks accumulate as the player places them one by one. A separate 5×5 LED matrix acts as a live preview window, showing the next block in white before it is placed. The player uses a five-button controller for directions (up, down, left, right, place) to position and drop each block onto the board. An LCD screen tracks the score in real time, and a NeoPixel ring lights up green when a line is cleared and red when the game ends.
+The experience is satisfying in the same way the original mobile game is. There is a quiet pleasure in slotting a block perfectly into a gap and watching a full row or column vanish in a flash of light. What makes this version special is that it is entirely physical, completely replacing the need for a phone with the glow of the LEDs, the click of the buttons, and the tactile feedback of a real controller. It reactivates nostalgia, reminiscent of the times when video games used to be physical.`
 
 ---
 
@@ -101,7 +101,7 @@ Answer the following:
 - Why would someone want to try it again?
 
 **Response:**  
-The experience is a single-player puzzle game that rewards spatial thinking and forward strategy. The player must look at the incoming block on the preview matrix and decide where it fits best on the board, while also considering what the future turns could look like. The player should feel a sense of focus and flow while playing, punctuated by bursts of satisfaction when a line clears and the board opens up. The visual feedback makes every successful clear feel rewarding rather than silent. The moment the game ends, the red flash and the final score on the LCD create a natural desire to beat the number next time. Someone would want to try it again because puzzle games like this are inherently "one more go" experiences. One always believes they can beat the number the next time they play and the glowing hardware certainly makes it visually appealing to pick up and play again.
+`The experience is a single-player puzzle game that rewards spatial thinking and forward strategy. The player must look at the incoming block on the preview matrix and decide where it fits best on the board, while also considering what the future turns could look like. The player should feel a sense of focus and flow while playing, punctuated by bursts of satisfaction when a line clears and the board opens up. The visual feedback makes every successful clear feel rewarding rather than silent. The moment the game ends, the red flash and the final score on the LCD create a natural desire to beat the number next time. Someone would want to try it again because puzzle games like this are inherently "one more go" experiences. One always believes they can beat the number the next time they play and the glowing hardware certainly makes it visually appealing to pick up and play again.`
 
 ## 2.3 Design Persona
 Complete the sentence below:
@@ -109,7 +109,7 @@ Complete the sentence below:
 > We are designing this project as if we are a small creative studio making a **[toy / game / playable object / interactive experience]** for **[children / teens / adults / classmates / exhibition visitors / mixed audience]**.
 
 **Response:**  
-I am designing this project as if I am a small creative studio making a physical game for mostly teenagers but also mixed audiences.
+`I am designing this project as if I am a small creative studio making a physical game for mostly teenagers but also mixed audiences.`
 
 ---
 
@@ -120,15 +120,14 @@ List what inspired the project.
 
 | Source Type | Title / Link | What Inspired You |
 |---|---|---|
-| App | Block Blast | Core logic of gameplay of placing blocks, clearing full lines and columns, game over when no space remains |
-| Board game/ Toy | Tetris | The idea that a falling-block puzzle can be endlessly replayable and deeply satisfying in a tactile form |
-| `[Toy / Board game / App / Video / Website / Object]` | `[Link or title]` | `[What did you learn or borrow?]` |
+| `App` | `Block Blast` | `Core logic of gameplay of placing blocks, clearing full lines and columns, game over when no space remains` |
+| `Board game/ Toy` | `Tetris` | `The idea that a falling-block puzzle can be endlessly replayable and deeply satisfying in a tactile form` |
 
 ## 3.2 Original Twist
 What makes your project original?
 
 **Response:**  
-While Block Blast already exists as a polished mobile app, no one has physically built it as an LED matrix game with real button controls. The aim is to simulate a retro video game controller, to build on the factor of nostalgia and offline connection. The project's originality lies in the translation from screen to hardware with the 5×5 preview matrix as a separate physical display, the NeoPixel ring as an expressive status indicator, and the use of colourful individually-addressable LEDs that make each player's board state look visually unique. It is not just a copy of the game but a reimagining of what that game feels like when you can hold it, press real buttons, and watch light physically change in front of you.
+`While Block Blast already exists as a polished mobile app, no one has physically built it as an LED matrix game with real button controls. The aim is to simulate a retro video game controller, to build on the factor of nostalgia and offline connection. The project's originality lies in the translation from screen to hardware with the 5×5 preview matrix as a separate physical display, the NeoPixel ring as an expressive status indicator, and the use of colourful individually-addressable LEDs that make each player's board state look visually unique. It is not just a copy of the game but a reimagining of what that game feels like when you can hold it, press real buttons, and watch light physically change in front of you.`
 
 ---
 
@@ -144,29 +143,29 @@ Examples:
 - move object → sensor detects → sound/light response → player reacts
 
 **Response:**  
-preview block → position → place → clear lines → score → repeat → game over
+`preview block → position → place → clear lines → score → repeat → game over`
 
 ## 4.2 Intended Player / Audience
 
 | Question | Response |
 |---|---|
-| Who is this for? | Anyone who wants to go back to a simpler time, disconnect from their phone or just enjoy a game of simple strategy |
-| Age range | 10 years and above |
-| Solo or multiplayer | Solo |
-| Expected duration of one round | Anywhere from 3 - 10 minutes on basis of skill |
-| What should the player feel? | Focused and competitive while playing, satisfied when game ends |
-| Is explanation required before use? | Minimal, most people are aware of the game, and its quite self explanatory otherwise |
+| Who is this for? | `Anyone who wants to go back to a simpler time, disconnect from their phone or just enjoy a game of simple strategy` |
+| Age range | `10 years and above` |
+| Solo or multiplayer | `Solo` |
+| Expected duration of one round | `Anywhere from 3 - 10 minutes on basis of skill` |
+| What should the player feel? | `Focused and competitive while playing, satisfied when game ends` |
+| Is explanation required before use? | `Minimal, most people are aware of the game, and its quite self explanatory otherwise` |
 
 ## 4.3 Player Journey
 Describe exactly how a player will use the project.
 
-1. **Approach:** `[How does the player first encounter it?]`
-2. **Start:** The game is already running in idle/start state. The player presses any button or the Place button to begin.
-3. **First Action:** A white block shape appears on the 5×5 preview matrix. The player presses the directional buttons to move the cursor (ghost block) around the 8×8 board to choose a placement position.
-4. **Main Interaction:** The player continuously receives new blocks on the preview matrix, decides where they fit best on the board, navigates the cursor, and presses Place to lock them in. The board fills up gradually.
-5. **System Response:** Each placed block lights up in a random colour on the 8×8 matrix. When a full row or column is completed, it instantly clears, the NeoPixel ring flashes green, and the LCD score updates. The preview matrix immediately shows the next block.
-6. **Win / Lose / End Condition:** The game ends when the current block cannot be placed anywhere on the board. The NeoPixel ring flashes red, the LCD displays the final score on row 2.
-7. **Reset:** After a 15-second display of the final score, the board clears and a new game begins automatically.
+1. **Approach:** `Approach the table where the game is kept.`
+2. **Start:** `The game is already running in idle/start state. The player presses any button or the Place button to begin.`
+3. **First Action:** `A white block shape appears on the 5×5 preview matrix. The player presses the directional buttons to move the cursor (ghost block) around the 8×8 board to choose a placement position.`
+4. **Main Interaction:** `The player continuously receives new blocks on the preview matrix, decides where they fit best on the board, navigates the cursor, and presses Place to lock them in. The board fills up gradually.`
+5. **System Response:** `Each placed block lights up in a random colour on the 8×8 matrix. When a full row or column is completed, it instantly clears, the LED flashes green, the line blinks and the score updates. The preview matrix immediately shows the next block.`
+6. **Win / Lose / End Condition:** `The game ends when the current block cannot be placed anywhere on the board. The LED flashes red, the computer displays the final score and the high score.`
+7. **Reset:** `After a 15-second display of the final score, the board clears and a new game begins automatically.`
 
 ## 4.4 Rules of Play
 If your project is a game, list the rules clearly.
@@ -185,24 +184,24 @@ If your project is a game, list the rules clearly.
 ## 5.1 Definition of “Playable”
 Your project will be considered complete only if these conditions are met.
 
-- [ ] `The 8x8 LED matrix correctly displays placed blocks in colour and updates in real time`
-- [ ] `The 5×5 preview region on the second matrix correctly shows the upcoming block in white`
-- [ ] `All five buttons respond correctly to the input`
-- [ ] `Clearing lines works smoothly and in sync with the flash of the green LED`
-- [ ] `The game correctly detects when no more placement is possible, triggering the red LED and clearing the whole board`
+- [+] `The 8x8 LED matrix correctly displays placed blocks in colour and updates in real time`
+- [+] `The 5×5 preview region on the second matrix correctly shows the upcoming block in white`
+- [+] `All five buttons respond correctly to the input`
+- [+] `Clearing lines works smoothly and in sync with the flash of the green LED`
+- [+] `The game correctly detects when no more placement is possible, triggering the red LED and clearing the whole board`
 
 ## 5.2 Minimum Viable Version
 What is the smallest version of this project that still delivers the core experience?
 
 **Response:**  
-A working version where the player can place blocks on the 8×8 matrix using the five buttons, lines clear when completed and the game ends and resets correctly. The 5×5 preview matrix, LCD screen and NeoPixel ring are part of the minimum viable version since they are central to the designed experience.
+`A working version where the player can place blocks on the 8×8 matrix using the five buttons, lines clear when completed and the game ends and resets correctly. The 5×5 preview matrix, LCD screen and NeoPixel ring are part of the minimum viable version since they are central to the designed experience.`
 
 ## 5.3 Stretch Features
 What features are nice to have but not essential?
 
-- A high score that persists across resets, stored in the ESP32's non-volatile memory and shown on the LCD at game over
-- A difficulty or speed mode where a time limit per placement is enforced, adding pressure
-- Sound effects using a small buzzer
+- `A high score that persists across resets, stored in the ESP32's non-volatile memory and shown on the LCD at game over`
+- `A difficulty or speed mode where a time limit per placement is enforced, adding pressure`
+- `Sound effects using a small buzzer`
   
 ---
 
@@ -211,16 +210,16 @@ What features are nice to have but not essential?
 ## 6.1 Project Type
 Check all that apply.
 
-- [ ] Electronics-based
+- [+] Electronics-based
 - [ ] Mechanical
 - [ ] Sensor-based
 - [ ] App-connected
 - [ ] Motorized
 - [ ] Sound-based
-- [ ] Light-based
+- [+] Light-based
 - [ ] Screen/UI-based
-- [ ] Fabricated structure
-- [ ] Game logic based
+- [+] Fabricated structure
+- [+] Game logic based
 - [ ] Installation / tabletop experience
 - [ ] Other: `[Write here]`
 
@@ -235,27 +234,26 @@ Include:
 - app interaction if any.
 
 **Response:**  
-Input: Five tactile buttons for different directions (up, down, left, right and place) are wired to the ESP32 GPIO, using the PULL_DOWN configuration.
-Processing: An ESP32 microcontroller running MicroPython executes all game logic including block selection, cursor movement, collision detection, line clearing, score tracking, and game over detection. The board state is stored as an 8×8 Python list where each cell is either empty or filled. 
-Output: An 8×8 NeoPixel matrix displays the live game board. A second 8×8 matrix displays the upcoming block in white in its bottom-right 5×5 region only (first 3 rows and columns are unused). A green LED flashes when a line is cleared. A red LED flashes when the game ends.
-Physical structure: 
-App interaction: NA
+- `Input: Five tactile buttons for different directions (up, down, left, right and place) are wired to the ESP32 GPIO, using the PULL_DOWN configuration.`
+- `Processing: An ESP32 microcontroller running MicroPython executes all game logic including block selection, cursor movement, collision detection, line clearing, score tracking, and game over detection. The board state is stored as an 8×8 Python list where each cell is either empty or filled.` 
+- `Output: An 8×8 NeoPixel matrix displays the live game board. A second 8×8 matrix displays the upcoming block in white in its bottom-right 5×5 region only (first 3 rows and columns are unused). A green LED flashes when a line is cleared. A red LED flashes when the game ends.`
+- `Physical structure: A box made of MDF with cutouts for the components that need to placed, and enough space for remaining components to be placed below.` 
+- `App interaction: NA`
 
 ## 6.3 Input / Output Map
 
 | System Part | Type | What It Does |
 |---|---|---|
-| Up button | Input | Moves cursor up |
-| Down button | Input | Moves cursor down |
-| Left button | Input | Moves cursor left |
-| Right button | Input | Moves cursor right |
-| Place button | Input | To place the block on the board in a final position |
-| ESP32 | Processing | Controls the whole game, runs the code |
-| 8x8 LED Matrix | Output | Displays the board state to play the game on|
-| 8x8 LED Matrix | Output | Displays a preview of the next block to come |
-| Green LED | Output | Flashes thrice when a line clears |
-| Red LED | Output | Flashes thrice when the game is over |
-| `[Mechanical Assembly]` | Physical Action | `[Describe]` |
+| `Up button` | `Input` | `Moves cursor up` |
+| `Down button` | `Input` | `Moves cursor down` |
+| `Left button` | `Input` | `Moves cursor left` |
+| `Right button` | `Input` | `Moves cursor right` |
+| `Place button` | `Input `| `To place the block on the board in a final position` |
+| `ESP32` | `Processing` | `Controls the whole game, runs the code` |
+| `8x8 LED Matrix` | `Output` | `Displays the board state to play the game on` |
+| `8x8 LED Matrix` | `Output `| `Displays a preview of the next block to come` |
+| `Green LED` | `Output `| `Flashes thrice when a line clears` |
+| `Red LED` | `Output` | `Flashes thrice when the game is over` |
 
 ---
 
@@ -830,17 +828,17 @@ What did you learn about:
 
 **Response:**  
 Designing for play: The game needed very little explanation for players familiar with Block Blast or Tetris. The physical format  communicates the interaction almost immediately. The biggest design lesson was that the preview matrix is essential to the experience, not optional. Without it, players have no time to plan ahead and the game feels reactive rather than strategic.
-Delight: The line clear blink sequence was a late addition but significantly improved the feel of the game. The brief flash before lines disappear gives the player a moment to register what they achieved, which makes clearing lines feel more satisfying than an instant wipe.
+Delight: The line clear blink sequence was a late addition but significantly improved the feel of the game. The brief blinking before lines disappear gives the player a moment to register what they achieved, which makes clearing lines feel more satisfying than an instant wipe.
 Clarity: The white cursor ghost moving over the coloured board is immediately readable — players understand within one or two button presses that the white shape is what they are controlling. The colour change on placement (white to colour) communicates the transition from active block to settled block clearly.
-Physical interaction: The tactile click of the buttons is genuinely satisfying and adds to the retro feel of the project. The button layout — four directions plus one confirm — is intuitive and requires no explanation.
+Physical interaction: The tactile click of the buttons is genuinely satisfying and adds to the retro feel of the project. The button layout is intuitive and requires no explanation.
 Player understanding: Every player who tested the game understood the core loop within 30 seconds without any instruction. The only confusion was around the preview matrix — some players did not immediately recognise it as showing the next block. A small label or indicator next to the preview panel would solve this.
-Iteration: The project went through nine distinct versions across four weeks, each resolving a specific issue found during testing. The most important lesson from iteration was to resist adding new features until existing ones are fully stable — the LCD was attempted too early and cost time that could have been spent on the physical enclosure.
+Iteration: The project went through more than nine versions across four weeks, each resolving a specific issue found during testing. The most important lesson from iteration was to resist adding new features until existing ones are fully stable. 
 
 ## 19.4 If You Had One More Week
 What would you improve next?
 
 **Response:**  
-`[Write here]`
+The first priority would be getting the LCD score display working reliably. The second priority would be building a better physical enclosure by adding buffed acyrlic sheets to the MDF display and adding labels via laser cutting. The third priority would be adding a passive buzzer for sound feedback. Another important thing would be to add a battery and upload the code into the ESP32 itself so the game became completely portable. 
 
 ---
 
