@@ -308,7 +308,7 @@ Check all that apply.
 - [ ] Wheels
 - [ ] Sliders
 - [ ] Levers
-- [Not applicable] Not applicable
+- [+] Not applicable
 
 ## 8.2 Mechanical Description
 Describe the mechanism and what it is meant to do.
@@ -348,20 +348,20 @@ NA
 
 | Component | Quantity | Purpose |
 |---|---:|---|
-| ESP32 | 1 | Main controller |
-| 8x8 Neopixel Matrix | 2 | One is used for displaying the real game board, while one is used for previewing the upcoming blocks |
-| Tactile push buttons | 5 | Up, Down, Left, Right, Place- control the direction of the block on board |
-| Green LED | 1 | Indicator of line clearing |
-| Red LED | 1 | Indicator of game ending |
-| Resistor | 2 | Data line protection for both matrices |
-| External 5V power supply | 1 | Powers breadboard |
+| `ESP32` | `1` | `Main controller` |
+| `8x8 Neopixel Matrix` | `2` | `One is used for displaying the real game board, while one is used for previewing the upcoming blocks` |
+| `Tactile push buttons` | `5` | `Up, Down, Left, Right, Place- control the direction of the block on board` |
+| `Green LED` | `1` | `Indicator of line clearing` |
+| `Red LED` | `1` | `Indicator of game ending` |
+| `Resistor` | `2` | `Data line protection for both matrices` |
+| `External 5V power supply` | `1` | `Powers breadboard` |
 
 
 ## 9.2 Wiring Plan
 Describe the main electrical connections.
 
 **Response:**  
-Both matrices connect to the ESP32 via GPIO 13 and GPIO 32 respectively, each through a Ω resistor on the data line. Both matrices and the ESP32 are powered from an external 5V supply. The ESP32 receives 5V through its VIN pin, and the matrices receive 5V directly through their V+ pins. All grounds are tied together on a common rail. The five buttons connect between their respective GPIO pins and 3.3V, using internal PULL_DOWN in code. The green LED connects to GPIO 27 and GND. The red LED connects to GPIO 4 and GND.
+`Both matrices connect to the ESP32 via GPIO 13 and GPIO 32 respectively, each through a Ω resistor on the data line. Both matrices and the ESP32 are powered from an external 5V supply. The ESP32 receives 5V through its VIN pin, and the matrices receive 5V directly through their V+ pins. All grounds are tied together on a common rail. The five buttons connect between their respective GPIO pins and 3.3V, using internal PULL_DOWN in code. The green LED connects to GPIO 27 and GND. The red LED connects to GPIO 4 and GND.`
 
 ## 9.3 Circuit Diagram
 Insert a hand-drawn or software-made circuit diagram.
@@ -373,10 +373,10 @@ Insert a hand-drawn or software-made circuit diagram.
 
 | Question | Response |
 |---|---|
-| Power source | External 5V adapter |
-| Voltage required |  5V for both matrices and ESP32; ESP32 onboard regulator steps down to 3.3V internally for all GPIO logic |
-| Current concerns | Overheating of ESP32 due to connection between VIN and 5V |
-| Safety concerns | Overheating of ESP32 due to connection between VIN and 5V |
+| `Power source `| `External 5V adapter` |
+| `Voltage required `|  `5V for both matrices and ESP32; ESP32 onboard regulator steps down to 3.3V internally for all GPIO logic` |
+| `Current concerns` | `Overheating of ESP32 due to connection between VIN and 5V` |
+| `Safety concerns` | `Overheating of ESP32 due to connection between VIN and 5V` |
 
 ---
 
@@ -386,8 +386,8 @@ Insert a hand-drawn or software-made circuit diagram.
 
 | Tool / Platform | Purpose |
 |---|---|
-| MicroPython | Firmware language on ESP32 |
-| Thonny IDE | Code upload |
+| `MicroPython` | `Firmware language on ESP32` |
+| `Thonny IDE` | `Code upload` |
 
 ## 10.2 Software Logic
 Describe what the code must do.
@@ -402,15 +402,15 @@ Include:
 - reset behavior.
 
 **Response:**  
-Startup: Both matrices are cleared. A 1-second delay flushes any startup noise. All debounce timers reset. A random block loads into the preview matrix in white. The game board stays dark.
-Input handling: All five buttons are polled every 30ms. Each press is validated against a 250ms debounce timer per button. 
-Block pickup: When any directional button is pressed and no block is active, the current block transfers from preview to board at the first valid free position. The next block immediately appears in the preview. The ghost block that appears on the board is in white.
-Cursor movement: Directional buttons move the cursor within board boundaries.
-Collision detection: The white cursor moves freely over existing coloured blocks visually. The Place button only locks the block in if there is no overlap with existing blocks and no out-of-bounds cells.
-Placement: On valid placement, the block appears on the board in a random colour. Score increments by 1. Line clear check runs immediately.
-Line clearing: All completed rows and columns are identified and cleared simultaneously as score increments by 10 per line. Green LED flashes thrice.
-Game over: After each placement, all 8×8 positions are scanned for any valid placement of the next block. If none exists, red LED flashes thrice, both matrices clear. There is a 3-second pause before game restarts.
-Reset: run_game() calls itself recursively, reinitialising all state variables cleanly.
+- Startup: `Both matrices are cleared. A 1-second delay flushes any startup noise. All debounce timers reset. A random block loads into the preview matrix in white. The game board stays dark.`
+- Input handling: `All five buttons are polled every 30ms. Each press is validated against a 250ms debounce timer per button.` 
+- Block pickup: `When any directional button is pressed and no block is active, the current block transfers from preview to board at the first valid free position. The next block immediately appears in the preview. The ghost block that appears on the board is in white.`
+- Cursor movement: `Directional buttons move the cursor within board boundaries.`
+- Collision detection: `The white cursor moves freely over existing coloured blocks visually. The Place button only locks the block in if there is no overlap with existing blocks and no out-of-bounds cells.`
+- Placement: `On valid placement, the block appears on the board in a random colour. Score increments by 1. Line clear check runs immediately.`
+- Line clearing: `All completed rows and columns are identified and cleared simultaneously as score increments by 10 per line. Green LED flashes thrice.`
+- Game over: `After each placement, all 8×8 positions are scanned for any valid placement of the next block. If none exists, red LED flashes thrice, both matrices clear. There is a 3-second pause before game restarts.`
+- Reset: `run_game() calls itself recursively, reinitialising all state variables cleanly.`
 
 ## 10.3 Code Flowchart
 Insert a flowchart showing your code logic.
@@ -431,7 +431,7 @@ Suggested sequence:
 ## 10.4 Pseudocode
 
 
-START
+`START
   clear both matrices
   wait 1 second
   reset all debounce timers
@@ -470,7 +470,7 @@ LOOP
     flash red LED
     clear both matrices
     wait 3 seconds
-    restart
+    restart`
 
 
 ---
@@ -479,7 +479,7 @@ LOOP
 
 ## 11.1 Is an app part of this project?
 - [ ] Yes
-- [ ] No
+- [+] No
 
 If yes, complete this section.
 
@@ -546,7 +546,7 @@ Examples:
 - Why bearing instead of a plain shaft hole?
 
 **Response:**  
-WS2812B matrices were chosen because they are individually addressable, require only a single data wire each, and are available in pre-assembled 8×8 panels — making physical setup clean and reliable. The ESP32 was chosen over Arduino because MicroPython makes the game logic far easier to write and debug, and its processing speed handles real-time LED updates without issue. Tactile buttons were chosen over a joystick module because the game only needs discrete directional inputs and individual coloured buttons better simulate the feel of a retro game controller. Simple green and red LEDs were used for the status indicators because they are simpler to wire and use less current. MDF was chosen over cardboard for the physical base because it is rigid, flat, and will not warp under the weight of the components during a showcase.
+`WS2812B matrices were chosen because they are individually addressable, require only a single data wire each, and are available in pre-assembled 8×8 panels — making physical setup clean and reliable. The ESP32 was chosen over Arduino because MicroPython makes the game logic far easier to write and debug, and its processing speed handles real-time LED updates without issue. Tactile buttons were chosen over a joystick module because the game only needs discrete directional inputs and individual coloured buttons better simulate the feel of a retro game controller. Simple green and red LEDs were used for the status indicators because they are simpler to wire and use less current. MDF was chosen over cardboard for the physical base because it is rigid, flat, and will not warp under the weight of the components during a showcase.`
 
 ## 12.3 Items to Purchase Separately
 
@@ -668,7 +668,7 @@ Expected outcomes:
 What is the single biggest uncertainty in your project at this stage?
 
 **Response:**  
-Whether the physical enclosure can be built cleanly enough for the final showcase, and if the LCD will work in time. 
+`Whether the physical enclosure can be built cleanly enough for the final showcase, and if the LCD will work in time. `
 
 ---
 
@@ -728,10 +728,10 @@ Include:
 - revisions.
 
 **Response:**  
-Electronics assembly: All components wired on a full-size breadboard. Both matrices connected via 330Ω resistors on data lines. Buttons wired to GPIO with PULL_UP. All components share a single 5V common ground rail via external supply through ESP32 Vin, and they also share common GND.
+`Electronics assembly: All components wired on a full-size breadboard. Both matrices connected via 330Ω resistors on data lines. Buttons wired to GPIO with PULL_UP. All components share a single 5V common ground rail via external supply through ESP32 Vin, and they also share common GND.
 Code upload: Code written and uploaded using Thonny. Each component was tested individually before integration into the full game loop.
 Physical enclosure: MDF board used as a flat base. Matrices and breadboard positioned for comfortable reach of buttons during play. Enclosure layout prototyped in cardboard first before any cutting.
-Revisions during build: Moved from 3-row/3-column offset on preview matrix to 3-row/2-column offset after physical testing showed better centring. Colours reduced from max 30 to max 25 across all channels to reduce LED brightness at close viewing distance.
+Revisions during build: Moved from 3-row/3-column offset on preview matrix to 3-row/2-column offset after physical testing showed better centring. Colours reduced from max 30 to max 25 across all channels to reduce LED brightness at close viewing distance.`
 
 ## 17.2 Build Photos
 Add photos throughout the project.
@@ -771,7 +771,7 @@ Example:
 Describe the final version of your project.
 
 **Response:**  
-The final version of IRL Block Blast is a fully playable single-player puzzle game built on an ESP32 microcontroller running MicroPython. The game is displayed on an 8×8 NeoPixel matrix where colourful blocks are placed by the player one at a time using a five-button directional controller. A second 8×8 matrix with its central 5×5 region active serves as a live preview window, showing the upcoming block in white before it is placed. A green LED flashes when a line clears and a red LED flashes when the game ends. All components are powered from a single external 5V supply routed through the ESP32 Vin pin to ensure a clean common ground and stable data signal. At game over, the board and preview blink three times before clearing, the final score and high score print to the laptop screen via USB serial, and the game restarts automatically after five seconds.
+`The final version of IRL Block Blast is a fully playable single-player puzzle game built on an ESP32 microcontroller running MicroPython. The game is displayed on an 8×8 NeoPixel matrix where colourful blocks are placed by the player one at a time using a five-button directional controller. A second 8×8 matrix with its central 5×5 region active serves as a live preview window, showing the upcoming block in white before it is placed. A green LED flashes when a line clears and a red LED flashes when the game ends. All components are powered from a single external 5V supply routed through the ESP32 Vin pin to ensure a clean common ground and stable data signal. At game over, the board and preview blink three times before clearing, the final score and high score print to the laptop screen via USB serial, and the game restarts automatically after five seconds.`
 
 ## 18.2 What Works Well
 - The core gameplay loop — placing blocks, clearing lines, and detecting game over — works reliably and feels satisfying to play
@@ -788,7 +788,7 @@ The final version of IRL Block Blast is a fully playable single-player puzzle ga
 How did the project change from the initial idea?
 
 **Response:**  
-The original plan included a 16×2 I2C LCD for score display and a NeoPixel ring as the status indicator. During the build, the LCD was removed after persistent I2C communication issues could not be resolved in time, and the NeoPixel ring was replaced with two simple LEDs — one green and one red — which provide identical flash feedback with far simpler wiring and lower current draw. Score display moved to the laptop screen via serial print at game end rather than a live LCD readout.
+`The original plan included a 16×2 I2C LCD for score display and a NeoPixel ring as the status indicator. During the build, the LCD was removed after persistent I2C communication issues could not be resolved in time, and the NeoPixel ring was replaced with two simple LEDs — one green and one red — which provide identical flash feedback with far simpler wiring and lower current draw. Score display moved to the laptop screen via serial print at game end rather than a live LCD readout.`
 
 ---
 
@@ -811,11 +811,11 @@ What did you learn about:
 - integration?
 
 **Response:**  
-Electronics: Learned that WS2812B LEDs are extremely sensitive to power rail differences between the microcontroller and the LED supply.
+`Electronics: Learned that WS2812B LEDs are extremely sensitive to power rail differences between the microcontroller and the LED supply.
 Coding: Learned how to structure a game loop from scratch, handling input, updating state and rendering output without any framework to rely on. 
 Mechanisms: NA
 Fabrication: Learned that prototyping the enclosure layout in cardboard before committing to MDF saves significant time. Physical placement of matrices, buttons, and the breadboard needs to be considered early, retrofitting the layout after components are wired is difficult.
-Integration: Learned that integrating components one at a time and testing after each addition makes debugging significantly faster. Running all components together from the first attempt creates too many possible failure points to diagnose efficiently.
+Integration: Learned that integrating components one at a time and testing after each addition makes debugging significantly faster. Running all components together from the first attempt creates too many possible failure points to diagnose efficiently.`
 
 ## 19.3 Design Reflection
 What did you learn about:
@@ -827,28 +827,28 @@ What did you learn about:
 - iteration?
 
 **Response:**  
-Designing for play: The game needed very little explanation for players familiar with Block Blast or Tetris. The physical format  communicates the interaction almost immediately. The biggest design lesson was that the preview matrix is essential to the experience, not optional. Without it, players have no time to plan ahead and the game feels reactive rather than strategic.
+`Designing for play: The game needed very little explanation for players familiar with Block Blast or Tetris. The physical format  communicates the interaction almost immediately. The biggest design lesson was that the preview matrix is essential to the experience, not optional. Without it, players have no time to plan ahead and the game feels reactive rather than strategic.
 Delight: The line clear blink sequence was a late addition but significantly improved the feel of the game. The brief blinking before lines disappear gives the player a moment to register what they achieved, which makes clearing lines feel more satisfying than an instant wipe.
 Clarity: The white cursor ghost moving over the coloured board is immediately readable — players understand within one or two button presses that the white shape is what they are controlling. The colour change on placement (white to colour) communicates the transition from active block to settled block clearly.
 Physical interaction: The tactile click of the buttons is genuinely satisfying and adds to the retro feel of the project. The button layout is intuitive and requires no explanation.
 Player understanding: Every player who tested the game understood the core loop within 30 seconds without any instruction. The only confusion was around the preview matrix — some players did not immediately recognise it as showing the next block. A small label or indicator next to the preview panel would solve this.
-Iteration: The project went through more than nine versions across four weeks, each resolving a specific issue found during testing. The most important lesson from iteration was to resist adding new features until existing ones are fully stable. 
+Iteration: The project went through more than nine versions across four weeks, each resolving a specific issue found during testing. The most important lesson from iteration was to resist adding new features until existing ones are fully stable.`
 
 ## 19.4 If You Had One More Week
 What would you improve next?
 
 **Response:**  
-The first priority would be getting the LCD score display working reliably. The second priority would be building a better physical enclosure by adding buffed acyrlic sheets to the MDF display and adding labels via laser cutting. The third priority would be adding a passive buzzer for sound feedback. Another important thing would be to add a battery and upload the code into the ESP32 itself so the game became completely portable. 
+`The first priority would be getting the LCD score display working reliably. The second priority would be building a better physical enclosure by adding buffed acyrlic sheets to the MDF display and adding labels via laser cutting. The third priority would be adding a passive buzzer for sound feedback. Another important thing would be to add a battery and upload the code into the ESP32 itself so the game became completely portable. `
 
 ---
 
 # 20. Final Submission Checklist
 
 Before submission, confirm that:
-- [ ] Team details are complete
-- [ ] Project description is complete
-- [ ] Inspiration sources are included
-- [ ] Player journey is written
+- [+] Team details are complete
+- [+] Project description is complete
+- [+] Inspiration sources are included
+- [+] Player journey is written
 - [ ] Sketches are added
 - [ ] BOM is complete
 - [ ] Purchase list is complete
