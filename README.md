@@ -170,12 +170,12 @@ Describe exactly how a player will use the project.
 ## 4.4 Rules of Play
 If your project is a game, list the rules clearly.
 
-- The player must place the block shown on the 5×5 preview matrix somewhere on the 8×8 board — they cannot skip or discard a block.
-- Blocks cannot overlap existing placed blocks or go outside the board boundary.
-- Placing any block scores 1 point.
-- Completing a full row or full column (all 8 cells filled) clears that line and scores 10 points per line cleared.
-- Multiple rows and columns can be cleared in a single placement — all are cleared simultaneously and each scores 10 points.
-- The game ends when no position on the board can fit the current block.
+- `The player must place the block shown on the 5×5 preview matrix somewhere on the 8×8 board — they cannot skip or discard a block.`
+- `Blocks cannot overlap existing placed blocks or go outside the board boundary.`
+- `Placing any block scores 1 point.`
+- `Completing a full row or full column (all 8 cells filled) clears that line and scores 10 points per line cleared.`
+- `Multiple rows and columns can be cleared in a single placement — all are cleared simultaneously and each scores 10 points.`
+- `The game ends when no position on the board can fit the current block.`
 
 ---
 
@@ -314,7 +314,7 @@ Check all that apply.
 Describe the mechanism and what it is meant to do.
 
 **Response:**  
-NA
+`NA`
 
 ## 8.3 Motion Planning
 If something moves, explain:
@@ -325,20 +325,20 @@ If something moves, explain:
 - what could go wrong.
 
 **Response:**  
-NA
+`NA`
 
 ## 8.4 Simulation / CAD / Animation Before Making
 If your project includes mechanical motion, document the digital planning before fabrication.
 
 | Tool Used | File / Link | What Was Tested |
 |---|---|---|
-NA
+`NA`
 
 ## 8.5 Changes After Digital Testing
 What changed after the CAD, animation, or simulation stage?
 
 **Response:**  
-NA
+`NA`
 
 ---
 
@@ -430,48 +430,75 @@ Suggested sequence:
 
 ## 10.4 Pseudocode
 
-
 `START
   clear both matrices
-  wait 1 second
-  reset all debounce timers
-  pick random cur_block, next_block
-  show cur_block in preview (white)
-  block_active = False
+  reset board to 8x8 empty grid
+  reset score to 0
+  pick random cur_block and next_blk
+  show cur_block on game board (white cursor)
+  show next_blk on preview matrix (white)`
 
-LOOP
-  IF block_active is False:
-    IF any direction button pressed:
-      find first free position on board
-      IF no free position: GAME OVER
-      set cursor to free position
-      block_active = True
-      show next_block in preview immediately
-      draw board with white cursor ghost
+`MAIN LOOP
+  render preview matrix with next_blk
+  render game board with cur_block as white cursor`
 
-  IF block_active is True:
-    read buttons
-    IF up/down/left/right pressed:
-      calculate new cursor position within bounds
-      IF position changed: redraw board with cursor
-    IF place pressed:
-      IF block_fits at cursor:
-        write block to board in current colour
-        check and clear lines
-        IF lines cleared: flash green LED
-        load next_block as cur_block
-        pick new next_block
-        block_active = False
-        IF no valid position for cur_block: GAME OVER
-        show cur_block in preview
+  `IF up pressed AND top of block not at row 0:
+    cursor_y -= 1`
+
+  `IF down pressed AND bottom of block not at row 7:
+    cursor_y += 1`
+
+  `IF left pressed AND left edge of block not at col 0:
+    cursor_x -= 1`
+
+  `IF right pressed AND right edge of block not at col 7:
+    cursor_x += 1`
+
+  `IF place pressed:
+    IF block_fits(cur_block, cursor_x, cursor_y):
+      write cur_block into board array in current colour
+      score += 1
+      redraw board`
+
+      find all completed rows and columns
+      IF any found:
+        blink those cells twice
+        remove them from board
+        score += 10 per line cleared
         redraw board
+        flash green LED twice
 
-  GAME OVER:
-    flash red LED
-    clear both matrices
-    wait 3 seconds
-    restart`
+      cur_block = next_blk
+      next_blk = new random block
+      reset cursor to (0, 0)
 
+      normalise cur_block offsets to start at (0,0)
+      scan all 64 positions on board for valid placement
+      IF no valid position found:
+        GAME OVER
+      ELSE:
+        update preview with new next_blk
+        continue loop
+
+    ELSE (block does not fit at cursor):
+      brief red LED flash as warning
+      do nothing — player must move cursor first
+
+  `wait 25ms
+  repeat loop`
+
+`GAME OVER
+  blink both matrices three times
+  flash red LED five times
+  clear both matrices
+  print final score
+  IF score > high_score:
+    update high_score
+    print new high score message
+  ELSE:
+    print better luck next time
+  wait 5 seconds
+  restart from START`
 
 ---
 
@@ -495,23 +522,23 @@ Examples:
 - displaying data.
 
 **Response:**  
-NA
-
+`NA
+`
 ## 11.3 App Features
 
 | Feature | Purpose |
 |---|---|
-NA
+`NA`
 
 ## 11.4 UI Mockup
 Insert a sketch or screenshot of the app interface.
 
 **Insert image below:**  
-NA
+`NA`
 
 ## 11.5 App Screen Flow
 
-NA
+`NA`
 
 ---
 
@@ -521,20 +548,21 @@ NA
 
 | Item | Quantity | In Kit? | Need to Buy? | Estimated Cost | Material / Spec | Why This Choice? |
 |---|---:|---|---|---:|---|---|
-| ESP32 | 1 | Yes | No | 0 | Spec | Micropython game logic is easier to control |
-| LED Matrix | 2 | No | Yes | 299 x 2 | Spec | To create a playing board for the game, as well as a preview board to show upcoming pieces |
-| Tactile push buttons | 5 | Yes | No | 0 | Spec | To simulate the nostalgic feeling of playing on old video game consoles |
-| Breadboard | 1 | Yes | No | 0 | Spec | Easier connections between power supply, ESP32 and components |
-| Red LED | 1 | Yes | No | 0 | Spec | Signal for game ending |
-| Green LED | 1 | Yes | No | 0 | Spec | Signals line clearing |
-| Resistor | 2 | Yes | No | 0 | Spec | Reduce current flow |
-| Jumper wires | Multiple | Yes | No | 0 | Spec | Forming connections between components |
-| Power supply | 1 | Yes | No | 0 | Spec | Provide more power to ESP32 connections |
-| LCD screen | 1 | No | Yes | 220 | Spec | To display score |
-| i2c module | 1 | No | Yes | 150 | Spec | To display score |
-| MDF board | 1 | No | No | 0 | Material | To make the physical model viable |
-| Cardboard | 1 | No | No | 0 | Material | To make the physical model viable |
-| Tape | 1 | No | No | 0 | Material | To make the physical model viable |
+| `ESP32` | `1` | `Yes` | `No` | `0` | `Spec` | `Micropython game logic is easier to control` |
+| `LED Matrix` | `2` | `No` | `Yes` | `299 x 2` | `Spec` | `To create a playing board for the game, as well as a preview board to show upcoming pieces` |
+| `Tactile push buttons` | `5` | `Yes` | `No` | `0` | `Spec` | `To simulate the nostalgic feeling of playing on old video game consoles` |
+| `Breadboard` | `1` | `Yes` | `No` | `0` | `Spec` |` Easier connections between power supply, ESP32 and components` |
+| `Red LED` | `1` | `Yes` | `No` | `0` | `Spec` | `Signal for game ending` |
+| `Green LED` | `1` | `Yes` | `No` | `0` | `Spec` | `Signals line clearing` |
+| `Resistor` | `2` | `Yes` | `No` | `0` | `Spec` | `Reduce current flow `|
+| `Jumper wires` | `Multiple` | `Yes` | `No` | `0` | `Spec` | `Forming connections between components `|
+| `Power supply` | `1` | `Yes` | `No` | `0` | `Spec` | `Provide more power to ESP32 connections `|
+| `LCD screen` | `1` | `No` | `Yes` | `220` | `Spec` | `To display score` |
+| `i2c module` | `1` | `No` | `Yes` | `150` | `Spec` | `To display score` |
+| `MDF board` | `1` | `No` | `No` | `0` | `Material` | `To make the physical model viable` |
+| `Cardboard` | `1` | `No` | `No` | `0` | `Material` | `To make the physical model viable `|
+| `Tape` | `1` | `No` | `No` | `0` | `Material` | `To make the physical model viable` |
+
 
 ## 12.2 Material Justification
 Explain why you selected your main materials and components.
@@ -552,26 +580,26 @@ Examples:
 
 | Item | Why Needed | Purchase Link | Latest Safe Date to Procure | Status |
 |---|---|---|---|---|
-| LED matrix | The board for the whole game | `[Link]` | 13th April | Recieved |
-| LCD screen | To display score | `[Link]` | 18th April | Recieved (faulty) |
-| I2C module | To display score | `[Link]` | 18th April | Recieved (late) |
+| `LED matrix` | `The board for the whole game` | `NA` | `13th April` | `Recieved` |
+| `LCD screen` | `To display score` | `NA` | `18th April` | `Recieved (faulty)` |
+| `I2C module` | `To display score`| `NA` | `18th April` | `Recieved (late)` |
 
 ## 12.4 Budget Summary
 
 | Budget Item | Estimated Cost |
 |---|---:|
-| Electronics | 970 |
-| Mechanical parts | 0 |
-| Fabrication materials | 0 |
-| Purchased extras | 0 |
-| Contingency | 100 |
-| **Total** | 1070 |
+| `Electronics` | `970` |
+| `Mechanical parts` | `0 `|
+| `Fabrication materials` |` 0 `|
+| `Purchased extras` | `0 `|
+| `Contingency` | `100` |
+| `**Total**` | `1070` |
 
 ## 12.5 Budget Reflection
 If your cost is too high, what can be simplified, removed, substituted, or shared?
 
 **Response:**  
-NA
+`NA`
 
 ---
 
@@ -588,19 +616,19 @@ Include:
 - how documentation will be maintained.
 
 **Response:**  
-NA - working alone
+`NA - working alone`
 
 ## 13.2 Task Breakdown
 
 | Task ID | Task | Owner | Estimated Hours | Deadline | Dependency | Status |
 |---|---|---|---:|---|---|---|
-NA
+`NA`
 
 ## 13.3 Responsibility Split
 
 | Area | Main Owner | Support Owner |
 |---|---|---|
-NA
+`NA`
 
 ---
 
@@ -646,10 +674,11 @@ Expected outcomes:
 
 | Week | Planned Goal | What Actually Happened | What Changed | Next Steps |
 |---|---|---|---|---|
-| Week 1 | Finalise concept, complete BOM, identify purchases| Project concept finalised, all components identified, initial wiring planned | Decided to use two 8×8 matrices| Order parts, begin wiring plan |
-| Week 2 | Test all components, resolve any hardware issues | All components individually tested other than LCD screen and I2C module, which had not arrived yet. Power and signal issues discovered and resolved. Matrix orientation confirmed. | Faced issues with matrix lighting, solved it by connecting 5V to the ESP32 VIN | Build all systems into gameplay loop and figure out physical display |
-| Week 3 | Write full game code, integrate all components, make physical display | Basic game code working, with placement of blocks and blinking of LEDs | LCD screen still not added, physical display not built, colours of matrix were changed | Debug code, add some additional features and finish physical display |
-| Week 4 | Build enclosure, playtest, finish documentation | Game code running perfectl, LCD screen integration not possible, tactile physical display built | Had to make the scoring system a code output that printed on Thonny itself | Integration of a screen, uploading code on ESP32 itself and powering it using a battery so it could be a portable system |
+| `Week 1` | `Finalise concept, complete BOM, identify purchases` | `Project concept finalised, all components identified, initial wiring planned` | `Decided to use two 8×8 matrices` | `Order parts, begin wiring plan` |
+| `Week 2` | `Test all components, resolve any hardware issues` | `All components individually tested other than LCD screen and I2C module, which had not arrived yet. Power and signal issues discovered and resolved. Matrix orientation confirmed.` | `Faced issues with matrix lighting, solved it by connecting 5V to the ESP32 VIN` | `Build all systems into gameplay loop and figure out physical display` |
+| `Week 3` | `Write full game code, integrate all components, make physical display` | `Basic game code working, with placement of blocks and blinking of LEDs` | `LCD screen still not added, physical display not built, colours of matrix were changed` | `Debug code, add some additional features and finish physical display` |
+| `Week 4` | `Build enclosure, playtest, finish documentation` | `Game code running perfectl, LCD screen integration not possible, tactile physical display built` | `Had to make the scoring system a code output that printed on Thonny itself` | `Integration of a screen, uploading code on ESP32 itself and powering it using a battery so it could be a portable system` |
+
 
 ---
 
@@ -659,10 +688,10 @@ Expected outcomes:
 
 | Risk | Type | Likelihood | Impact | Mitigation Plan | Owner |
 |---|---|---|---|---|---|
-| Button bounce causing double inputs | Technical | High | High | Debounce software | Tashvi |
-| Matrix serpentine mismatch | Technical | High | Medium | Change code after running diagnostic to check the organisation | Tashvi |
-| Premature game over from unnormalised block offsets | Gameplay | Medium | High | Debug the code | Tashvi |
-| Physical enclosure not ready for demo | Time | Medium | Medium | Place it in a cardboard display instead of using MDF | Tashvi |
+| `Button bounce causing double inputs` | `Technical` | `High` | `High` | `Debounce software` | `Tashvi` |
+| `Matrix serpentine mismatch` | `Technical` | `High` | `Medium` | `Change code after running diagnostic to check the organisation` | `Tashvi` |
+| `Premature game over from unnormalised block offsets` | `Gameplay` | `Medium` | `High` | `Debug the code` | `Tashvi` |
+| `Physical enclosure not ready for demo` | `Time` | `Medium` | `Medium` | `Place it in a cardboard display instead of using MDF` | `Tashvi` |
 
 ## 15.2 Biggest Unknown Right Now
 What is the single biggest uncertainty in your project at this stage?
@@ -678,38 +707,38 @@ What is the single biggest uncertainty in your project at this stage?
 
 | What Needs Testing | How You Will Test It | Success Condition |
 |---|---|---|
-| Main matrix | Run chase, fill, cross, and rainbow row test patterns | All patterns display correctly with no corruption or dimness |
-| Preview matrix | Display each block shape in white in the active region | Correct offset, no LEDs lighting outside the 5×5 boundary |
-| Button input | Press each button and run a test to see if it works in the right direction as a cursor | If direction is correct |
-| Green LED | Clear line in game | LED flashing when line clears |
-| Red LED | Lose game, try to place block on top of existing block | LED flashing when game is lost, or blinking when the block cannot be placed |
+| `Main matrix` | `Run chase, fill, cross, and rainbow row test patterns` | `All patterns display correctly with no corruption or dimness` |
+| `Preview matrix` | `Display each block shape in white in the active region` | `Correct offset, no LEDs lighting outside the 5×5 boundary` |
+| `Button input` | `Press each button and run a test to see if it works in the right direction as a cursor` | `If direction is correct` |
+| `Green LED` | `Clear line in game` | `LED flashing when line clears` |
+| `Red LED` | `Lose game, try to place block on top of existing block` | `LED flashing when game is lost, or blinking when the block cannot be placed` |
 
 ## 16.2 Playtesting Plan
 
 | Question | How You Will Check |
 |---|---|
-| Do players understand what to do? | Ask a classmate to play without any explanation and observe what confuses them |
-| Is the interaction satisfying? | By asking multiple players how they felt about it |
-| Do players want another turn? | Count how many times the same person plays |
-| Is the challenge balanced? | Note how long it is taking |
-| Is the response clear and immediate? | Ask players if they understand the point of the LEDs flashing |
+| Do players understand what to do? | `Ask a classmate to play without any explanation and observe what confuses them` |
+| Is the interaction satisfying? | `By asking multiple players how they felt about it` |
+| Do players want another turn? | `Count how many times the same person plays` |
+| Is the challenge balanced? | `Note how long it is taking` |
+| Is the response clear and immediate? | `Ask players if they understand the point of the LEDs flashing` |
 
 ## 16.3 Testing and Debugging Log
 
 | Date | Problem Found | Type | What You Tried | Result | Next Action |
 |---|---|---|---|---|---|
-| Week 2 | Matrix very dim on external supply | Technical  | Connected external 5V to ESP32 VIN | Worked | Use battery |
-| Week 3 | Wrong LED mapping on matrix | Technical | Ran diagonostics | Worked | Changed code to adjust to that orientation |
-| Week 3 | Cursor glitching and dancing | Technical | Changed code | Worked | NA |
-| Week 4 | Game ending earlier | Gameplay | Changed code | Worked | NA |
-| Week 4 | LCD screen not working | Technical | Running multiple tests on it | Not working | Use OLED screen |
-| Week 4 | Physical box- some slots were far too large | Physical | Used cardboard and tape to fix most things | Worked | Reprint the MDF file |
+| `Week 2` | `Matrix very dim on external supply` | `Technical` | `Connected external 5V to ESP32 VIN` | `Worked` | `Use battery` |
+| `Week 3` | `Wrong LED mapping on matrix` | `Technical` | `Ran diagonostics` | `Worked` | `Changed code to adjust to that orientation` |
+| `Week 3` | `Cursor glitching and dancing` | `Technical` | `Changed code` | `Worked` | `NA` |
+| `Week 4` | `Game ending earlier` | `Gameplay` | `Changed code` | `Worked` | `NA` |
+| `Week 4` | `LCD screen not working` | `Technical` | `Running multiple tests on it` | `Not working` | `Use OLED screen` |
+| `Week 4` | `Physical box- some slots were far too large` | `Physical` | `Used cardboard and tape to fix most things` | `Worked` | `Reprint the MDF file` |
 
 ## 16.4 Playtesting Notes
 
 | Tester | What They Did | What Confused Them | What They Enjoyed | What You Will Change |
 |---|---|---|---|---|
-| Classmate | Played the game normally | The disappearing of the line | The whole game | Make the line clearing more prominent by making the line itself blink before disappearing |
+| `Classmate` | `Played the game normally` | `The disappearing of the line` | `The whole game` | `Make the line clearing more prominent by making the line itself blink before disappearing` |
 
 ---
 
@@ -755,13 +784,13 @@ Example:
 
 | Version | Date | What Changed | Why |
 |---|---|---|---|
-| v1 | Week 2 | Matrices were working, so were the switches | Verify working of individual components |
-| v2 | Week 3 | Basic gameplay worked, the switches could move around the blocks on the matrix, preview matrix was working | First playable version |
-| v3 | Week 3 | Startup glitch fixed | The block was appearing without clicking any buttons |
-| v4 | Week 3 | Code changed | Cursor was glitching and dancing |
-| v5 | Week 4 | Check main matrix block, not preview block | Game was ending prematurely due to error in game logic |
-| v6 | Week 4 | Fixed into physical display | Better presentation, more playable |
-| v7 | Week 4 | Score tracking, end-of-game print, line blink, board blink added | Additional effects to game to heighten experience |
+| `v1` | `Week 2` | `Matrices were working, so were the switches` | `Verify working of individual components` |
+| `v2` | `Week 3` | `Basic gameplay worked, the switches could move around the blocks on the matrix, preview matrix was working` | `First playable version` |
+| `v3` | `Week 3` | `Startup glitch fixed` | `The block was appearing without clicking any buttons` |
+| `v4` | `Week 3` | `Code changed` | `Cursor was glitching and dancing` |
+| `v5` | `Week 4` | `Check main matrix block, not preview block` | `Game was ending prematurely due to error in game logic` |
+| `v6` | `Week 4` | `Fixed into physical display` | `Better presentation, more playable` |
+| `v7` | `Week 4` | `Score tracking, end-of-game print, line blink, board blink added` | `Additional effects to game to heighten experience` |
 
 ---
 
@@ -774,15 +803,15 @@ Describe the final version of your project.
 `The final version of IRL Block Blast is a fully playable single-player puzzle game built on an ESP32 microcontroller running MicroPython. The game is displayed on an 8×8 NeoPixel matrix where colourful blocks are placed by the player one at a time using a five-button directional controller. A second 8×8 matrix with its central 5×5 region active serves as a live preview window, showing the upcoming block in white before it is placed. A green LED flashes when a line clears and a red LED flashes when the game ends. All components are powered from a single external 5V supply routed through the ESP32 Vin pin to ensure a clean common ground and stable data signal. At game over, the board and preview blink three times before clearing, the final score and high score print to the laptop screen via USB serial, and the game restarts automatically after five seconds.`
 
 ## 18.2 What Works Well
-- The core gameplay loop — placing blocks, clearing lines, and detecting game over — works reliably and feels satisfying to play
-- The line clear blink sequence gives clear visual feedback before lines disappear, making the clearing feel rewarding rather than abrupt
-- The preview matrix accurately shows the upcoming block in the correct 5×5 region every time a block is placed
-- Button debouncing works cleanly
-- All components running from a single 5V supply eliminated dimness issues that appeared during early testing
+* `The core gameplay loop — placing blocks, clearing lines, and detecting game over — works reliably and feels satisfying to play`
+* `The line clear blink sequence gives clear visual feedback before lines disappear, making the clearing feel rewarding rather than abrupt`
+* `The preview matrix accurately shows the upcoming block in the correct 5×5 region every time a block is placed`
+* `Button debouncing works cleanly`
+* `All components running from a single 5V supply eliminated dimness issues that appeared during early testing`
 
 ## 18.3 What Still Needs Improvement
-- The LCD score display was not successfully integrated — I2C communication issues persisted and the feature was removed to keep the core game stable. Score is only visible on the laptop screen at game end, not during play
-- The physical enclosure is connected via wires making it immobile, adding a battery would help significantly
+- `The LCD score display was not successfully integrated — I2C communication issues persisted and the feature was removed to keep the core game stable. Score is only visible on the laptop screen at game end, not during play`
+- `The physical enclosure is connected via wires making it immobile, adding a battery would help significantly`
 
 ## 18.4 What Changed From the Original Plan
 How did the project change from the initial idea?
@@ -800,7 +829,7 @@ What slowed you down?
 How well did you manage time, tasks, and responsibilities?
 
 **Response:**  
-NA
+`NA`
 
 ## 19.2 Technical Reflection
 What did you learn about:
