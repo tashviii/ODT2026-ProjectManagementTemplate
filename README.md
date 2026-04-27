@@ -263,7 +263,7 @@ Include:
 Add an early sketch of the full idea.
 
 **Insert image below:**  
-
+<img src="imagesinitial-game-design.jpg" width="400">
 
 
 ## 7.2 Labeled Build Sketch
