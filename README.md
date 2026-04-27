@@ -275,8 +275,8 @@ Add a sketch with labels showing:
 - output elements.
 
 **Insert image below:**  
-<img src="images/final-game-design.jpeg" width="400">
 <img src="images/game-final-design.jpeg" width="400">
+<img src="images/final-game-design.jpeg" width="600">
 
 ## 7.3 Approximate Dimensions
 
@@ -770,12 +770,7 @@ Suggested images:
 - app screenshot,
 - final build.
 
-Example:
-```md
-
-
-
-```
+<img src="images/process-vid.png" width="400">
 
 ## 17.3 Version History
 
