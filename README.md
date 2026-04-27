@@ -275,7 +275,8 @@ Add a sketch with labels showing:
 - output elements.
 
 **Insert image below:**  
-`[Upload image and link here]`
+<img src="images/final-game-design.jpeg" width="400">
+<img src="images/game-final-design.jpeg" width="400">
 
 ## 7.3 Approximate Dimensions
 
